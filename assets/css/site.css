@@ -230,12 +230,13 @@ h1, h2, h3 { margin: 0; font-weight: 700; line-height: 1.05; letter-spacing: 0.0
 .demo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
 @media (max-width: 900px) { .demo { grid-template-columns: 1fr; } }
 
-.demo__table {
+.demo__stage {
   position: relative;
   background: rgba(0, 0, 0, 0.22);
   padding: clamp(12px, 2vw, 24px);
 }
-.demo__canvas { width: 100%; height: auto; aspect-ratio: 720 / 860; touch-action: pan-y; cursor: crosshair; }
+.demo__canvas { width: 100%; height: auto; aspect-ratio: 720 / 860; }
+.demo__note { font-weight: 500; font-size: var(--step--1); opacity: 0.8; }
 .demo__hud { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 14px; font-weight: 700; }
 .demo__score { font-size: 1.1rem; letter-spacing: 0.06em; }
 .demo__keys { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 10px; }
@@ -305,7 +306,7 @@ h1, h2, h3 { margin: 0; font-weight: 700; line-height: 1.05; letter-spacing: 0.0
 .d-fuse { animation: dFuse 0.5s ease-in-out infinite alternate; transform-origin: center; transform-box: fill-box; }
 @keyframes dFuse { from { opacity: 0.35; } to { opacity: 1; } }
 .d-cross { animation: dCross 3.2s cubic-bezier(.5,0,.5,1) infinite; }
-@keyframes dCross { 0%, 30% { transform: translateX(0); } 50%, 80% { transform: translateX(62px); } 100% { transform: translateX(0); } }
+@keyframes dCross { 0%, 25% { transform: translateX(0); } 45%, 80% { transform: translateX(118px); } 100% { transform: translateX(0); } }
 
 /* ---------- ships ---------- */
 
@@ -313,6 +314,8 @@ h1, h2, h3 { margin: 0; font-weight: 700; line-height: 1.05; letter-spacing: 0.0
 .ship svg { width: clamp(96px, 12vw, 140px); height: auto; margin-bottom: 18px; }
 .ship h3 { font-size: var(--step-2); text-transform: uppercase; margin-bottom: 0.3em; }
 .ship p { font-size: 0.98rem; }
+.ship--locked h3 { opacity: 0.75; }
+.ship--locked p { opacity: 0.75; }
 @media (max-width: 760px) { .ships { grid-template-columns: 1fr; } .ship { display: grid; grid-template-columns: 96px 1fr; gap: 0 20px; align-items: start; } .ship svg { width: 96px; } }
 .powers { margin-top: 40px; padding-top: 24px; border-top: 2px solid rgba(244, 239, 230, 0.55); display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; }
 .powers b { margin-right: 4px; }

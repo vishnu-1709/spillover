@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SPILLOVER — a party shooter for phones placed top to top</title>
-<meta name="description" content="SPILLOVER is a local multiplayer shooter for 2 to 6 Android phones. Put the phones top to top, tilt to move, tap to shoot. Your shots leave your screen and land on your friend's. Free beta download.">
+<title>SPILLOVER — a party shooter for phones held face to face</title>
+<meta name="description" content="SPILLOVER is a local multiplayer shooter for 2 to 6 Android phones. Hold the phones face to face, tilt to move, tap to shoot. Your shots leave your screen and land on your friend's. Free beta download.">
 <meta name="theme-color" content="#6E4A72">
 <link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
 <meta property="og:title" content="SPILLOVER">
-<meta property="og:description" content="Put two phones top to top. Shoot off your screen, hit your friend on theirs. Free Android beta.">
+<meta property="og:description" content="Hold two phones face to face. Shoot off your screen, hit your friend on theirs. Free Android beta.">
 <meta property="og:image" content="assets/img/og.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -41,37 +41,37 @@
   <div class="hero__shot" aria-hidden="true"></div>
 
   <div class="hero__panel">
-    <p>A party shooter for phones placed top to top. Shoot off the edge of your screen and hit your friend on theirs.</p>
+    <p>A party shooter for phones held face to face. Shoot off the edge of your screen and hit your friend on theirs.</p>
     <div class="hero__actions">
       <a class="btn btn--paper" href="#download" data-dl-label>Download the beta</a>
-      <a class="btn btn--line" href="#how">Try it here first</a>
+      <a class="btn btn--line" href="#how">See how it plays</a>
     </div>
-    <p class="hero__fine" data-hero-fine>Free on Android. 2 to 6 players on the same Wi-Fi. Coming to Google Play soon.</p>
+    <p class="hero__fine" data-hero-fine>Free on Android, 2 to 6 players on the same Wi-Fi. Still in development, with updates coming regularly.</p>
   </div>
 </section>
 
 <div class="seam" aria-hidden="true"></div>
 
-<!-- DEMO: two phones on a table -->
+<!-- DEMO: two phones face to face, played by two bots -->
 <section class="screen screen--slate" id="how" aria-labelledby="how-title">
   <div class="inner demo">
     <div>
-      <h2 class="screen-title" id="how-title">Two phones.<br><span class="outline">One table.</span></h2>
+      <h2 class="screen-title" id="how-title">Two phones,<br><span class="outline">face to face.</span></h2>
       <p class="lede">Each phone is its own screen, but the shots don't stop at the edge. Fire off the top of yours and the shot comes out on theirs.</p>
-      <p>This is the whole game, so try it right here. The phone at the bottom is yours.</p>
       <ul class="demo__keys">
-        <li><b>Move</b><span>Move your mouse or drag your finger across your phone. In the real game, you tilt it.</span></li>
-        <li><b>Shoot</b><span>Click or tap. You have 3 shots and they refill.</span></li>
-        <li><b>Keyboard</b><span><span class="kbd">←</span> <span class="kbd">→</span> to move, <span class="kbd">Space</span> to shoot.</span></li>
+        <li><b>Tilt</b><span>Your phone is the controller. Turn it like a steering wheel and your ship slides that way.</span></li>
+        <li><b>Tap</b><span>Fire. You get 3 shots at a time and they refill.</span></li>
+        <li><b>Hold</b><span>Charge a bigger shot.</span></li>
       </ul>
     </div>
     <div>
-      <div class="demo__table">
-        <canvas class="demo__canvas" id="demo" width="720" height="860" tabindex="0" aria-label="Playable demo: your ship on the bottom phone, a bot on the top phone. Move to steer and click or press space to shoot." role="application"></canvas>
+      <div class="demo__stage">
+        <canvas class="demo__canvas" id="demo" width="720" height="860" role="img" aria-label="Demo match: two phones held top edge to top edge. Each player tilts their phone to steer, and shots fired off the top of one screen come out on the other."></canvas>
       </div>
       <div class="demo__hud">
-        <span class="demo__score" id="demo-score" aria-live="polite">You 0 &nbsp; Bot 0</span>
-        <button class="btn btn--line" type="button" id="demo-tilt" hidden>Steer by tilting</button>
+        <span class="demo__score" id="demo-score">Gold 0 – Plum 0</span>
+        <span class="demo__note">Demo match, played by the computer.</span>
+        <button class="btn btn--line" type="button" id="demo-play" hidden>Play demo</button>
       </div>
     </div>
   </div>
@@ -83,7 +83,7 @@
 <section class="screen screen--paper" id="setup" aria-labelledby="setup-title">
   <div class="inner">
     <h2 class="screen-title" id="setup-title">Ready in a minute</h2>
-    <p class="lede">Everyone needs the game on their own phone. That's all the setup there is.</p>
+    <p class="lede">Everyone needs the game on their own phone.</p>
     <ol class="steps">
       <li>
         <span class="steps__n" aria-hidden="true">1</span>
@@ -92,7 +92,7 @@
           <rect x="20" y="92" width="44" height="22"/><rect x="78" y="92" width="44" height="22"/><rect x="136" y="92" width="44" height="22"/>
         </svg>
         <h3>Join the same Wi-Fi</h3>
-        <p>All phones on one network. A phone's hotspot works too, so you can play anywhere.</p>
+        <p>A phone hotspot works too.</p>
       </li>
       <li>
         <span class="steps__n" aria-hidden="true">2</span>
@@ -102,7 +102,7 @@
           <path d="M84 50L58 74 M116 50l26 24"/><path d="M52 70l6 4-1 -7 M148 70l-6 4 1-7"/>
         </svg>
         <h3>One hosts, the rest join</h3>
-        <p>Open the game and tap Play. One person makes a room and picks the mode. Everyone else taps it in the list.</p>
+        <p>One person makes a room. Everyone else joins it.</p>
       </li>
       <li>
         <span class="steps__n" aria-hidden="true">3</span>
@@ -111,8 +111,8 @@
           <path d="M44 60h112" stroke-dasharray="4 6" stroke-width="2"/>
           <path d="M97 80h6v6h-6z M97 34h6v6h-6z" fill="#1F1D1A"/><path d="M100 76V44"/>
         </svg>
-        <h3>Put the phones top to top</h3>
-        <p>Top edges touching, flat on a table, or hold them and sit facing each other. With more players, sit in a circle.</p>
+        <h3>Sit face to face</h3>
+        <p>Top edges pointing at each other. More players? Sit in a circle.</p>
       </li>
       <li>
         <span class="steps__n" aria-hidden="true">4</span>
@@ -122,7 +122,7 @@
           <path d="M120 70h10v10h-10z" fill="#1F1D1A"/>
         </svg>
         <h3>Tilt to move, tap to shoot</h3>
-        <p>Hold to charge a bigger shot. The round button in the corner fires your power.</p>
+        <p>Hold to charge. The corner button fires your power.</p>
       </li>
     </ol>
   </div>
@@ -177,9 +177,9 @@
             <rect x="38" y="122" width="104" height="60"/><rect x="158" y="122" width="104" height="60"/>
             <path d="M150 122v60" stroke-dasharray="3 5" stroke-width="2"/>
             <circle cx="90" cy="38" r="8" fill="#D9A441" stroke="none"/><circle cx="210" cy="38" r="8" fill="#D9A441" stroke="none"/>
-            <g class="d-cross"><circle cx="90" cy="162" r="9" fill="#F4EFE6" stroke="none"/></g>
-            <circle cx="210" cy="162" r="9" fill="#F4EFE6" stroke="none"/>
-            <g class="d-up"><rect x="206" y="142" width="7" height="7" fill="#F4EFE6" stroke="none"/></g>
+            <g class="d-cross"><circle cx="80" cy="162" r="9" fill="#F4EFE6" stroke="none"/></g>
+            <circle cx="236" cy="162" r="9" fill="#F4EFE6" stroke="none"/>
+            <g class="d-up"><rect x="232" y="142" width="7" height="7" fill="#F4EFE6" stroke="none"/></g>
           </svg>
         </div>
         <div>
@@ -207,17 +207,16 @@
 <!-- SHIPS -->
 <section class="screen screen--plum" id="ships" aria-labelledby="ships-title">
   <div class="inner">
-    <h2 class="screen-title" id="ships-title">Pick your ship</h2>
-    <p class="lede">Three ships that play very differently. Each one comes in two looks, so pick the one that feels like yours.</p>
+    <h2 class="screen-title" id="ships-title">Your ship</h2>
+    <p class="lede">One ship in the test build. More are on the way.</p>
     <div class="ships">
-      <div class="ship"><span data-ship="shooter"></span><div><h3>Shooter</h3><p>Fast, straight shots. The easiest to pick up and the hardest to master.</p></div></div>
-      <div class="ship"><span data-ship="scatter"></span><div><h3>Scatter</h3><p>Fires a spread of shots. Slower, short range, and brutal up close.</p></div></div>
-      <div class="ship"><span data-ship="venom"></span><div><h3>Venom</h3><p>Lobs poison. A miss isn't wasted: it leaves a puddle that hurts anyone who moves through it.</p></div></div>
+      <div class="ship"><span data-ship="shooter"></span><div><h3>Shooter</h3><p>Fast, straight shots. Easy to pick up, hard to master.</p></div></div>
+      <div class="ship ship--locked"><svg viewBox="0 0 48 48" width="140" height="140" role="img" aria-label="Locked ship"><circle cx="24" cy="26" r="17" fill="none" stroke="#D8C4DB" stroke-width="2" stroke-dasharray="3 4"/><path d="M18 25h12v10H18z M20.5 25v-3a3.5 3.5 0 0 1 7 0v3" fill="none" stroke="#F4EFE6" stroke-width="2.2"/></svg><div><h3>Coming soon</h3><p>Unlocks in a future update.</p></div></div>
+      <div class="ship ship--locked"><svg viewBox="0 0 48 48" width="140" height="140" role="img" aria-label="Locked ship"><circle cx="24" cy="26" r="17" fill="none" stroke="#D8C4DB" stroke-width="2" stroke-dasharray="3 4"/><path d="M18 25h12v10H18z M20.5 25v-3a3.5 3.5 0 0 1 7 0v3" fill="none" stroke="#F4EFE6" stroke-width="2.2"/></svg><div><h3>Coming soon</h3><p>Unlocks in a future update.</p></div></div>
     </div>
     <div class="powers">
-      <b>Plus one power each round:</b>
+      <b>Powers:</b>
       <span class="power"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9c-4-1.5-7-4.5-7-9V6z"/></svg></i>Shield</span>
-      <span class="power"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 12h11 M11 7l5 5-5 5 M3 7h4 M3 17h4"/></svg></i>Dash</span>
       <span class="power"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 8h14 M15 5l3 3-3 3 M20 16H6 M9 13l-3 3 3 3"/></svg></i>Jam</span>
       <span class="power"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M6.5 6v6.5a5.5 5.5 0 0 0 11 0V6 M5 4h3v3H5z M16 4h3v3h-3z"/></svg></i>Magnet</span>
     </div>
@@ -230,7 +229,7 @@
 <section class="screen screen--ink" id="clips" aria-labelledby="clips-title" hidden>
   <div class="inner">
     <h2 class="screen-title" id="clips-title">Watch it played</h2>
-    <p class="lede">Real phones, real tables, real shouting.</p>
+    <p class="lede">Real phones, real friends, real shouting.</p>
     <div class="clips" id="clips-list"></div>
   </div>
 </section>
@@ -244,6 +243,7 @@
       <div>
         <h2 class="screen-title" id="dl-title">Get the beta</h2>
         <p class="lede">Free for Android. Install it on every phone that's going to play.</p>
+        <p>This is a test build, so some ships, powers and features are switched off for now. They'll arrive in updates.</p>
         <a class="btn btn--ink btn--big" id="dl-btn" href="#" download><span class="sq" aria-hidden="true"></span>Download for Android</a>
         <p class="dl__meta" id="dl-meta"></p>
 
@@ -263,7 +263,7 @@
         </ol>
         <div class="note">
           <p>The warnings appear because the beta isn't from the Play Store yet, not because anything is wrong with the file.</p>
-          <p>Getting an update later? Download the new version and install it over the old one. Your coins and unlocks stay.</p>
+          <p>Getting an update later? Download the new version and install it over the old one. Your progress stays.</p>
         </div>
       </div>
     </div>
@@ -293,8 +293,7 @@
       <a href="tester.html#feedback">Send feedback</a>
     </nav>
     <div class="foot__small">
-      <p>© 2026 SPILLOVER. Made for playing in the same room.</p>
-      <p>thanks to middle east.</p>
+      <p>Made for playing in the same room.</p>
     </div>
   </div>
 </footer>
