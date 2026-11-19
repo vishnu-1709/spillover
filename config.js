@@ -15,7 +15,7 @@ window.SPILLOVER = {
 
   // Google Apps Script web app URL that saves sign-ups and feedback
   // to your Google Sheet. See README → "Connect the forms".
-  formEndpoint: "",
+  formEndpoint: "https://script.google.com/macros/s/AKfycbz9hVmFejCAKXxCoKuzldIRwr8eVG2QkxdFf7TkkxIIN6ax0eIj3GLCSoGhEwP0Y24/exec",
 
   // When the game is live on Google Play, paste the store link here
   // and the page switches its wording automatically.
