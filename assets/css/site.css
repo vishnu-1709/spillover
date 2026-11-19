@@ -335,7 +335,7 @@ h1, h2, h3 { margin: 0; font-weight: 700; line-height: 1.05; letter-spacing: 0.0
 .dl { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
 @media (max-width: 900px) { .dl { grid-template-columns: 1fr; } }
 .dl__meta { margin: 14px 0 0; font-size: var(--step--1); }
-.dl__qr { background: var(--paper); color: var(--ink); padding: 20px; display: flex; gap: 20px; align-items: center; margin-top: 32px; max-width: 460px; box-shadow: 8px 8px 0 rgba(0,0,0,0.18); }
+.dl__qr { background: var(--paper); color: var(--ink); padding: 16px; display: inline-flex; gap: 18px; align-items: center; margin-top: 32px; max-width: 460px; box-shadow: 8px 8px 0 rgba(0,0,0,0.18); }
 .dl__qr canvas, .dl__qr img { width: 132px; height: 132px; image-rendering: pixelated; flex: none; }
 .dl__qr p { margin: 0; font-size: 0.95rem; }
 @media (hover: none) and (pointer: coarse) { .dl__qr { display: none; } }
