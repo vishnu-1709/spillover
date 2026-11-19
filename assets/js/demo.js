@@ -1,7 +1,9 @@
 // Self-playing two-phone demo. Two players hold their phones face to face,
 // top edge to top edge, and steer by tilting them like a steering wheel.
+// Turning the phone like a steering wheel slides the ship sideways; tipping it forward
+// or back moves the ship toward or away from the edge at half strength, like the game.
 // The ships move because of the tilt (same dead zone / full-speed angles as the game),
-// so the phone you see turning is what drives the ship.
+// so the phone you see turning and tipping is what drives the ship.
 (function () {
   var canvas = document.getElementById("demo");
   if (!canvas || !canvas.getContext) return;
@@ -45,10 +47,11 @@
 
   var state, running = false, last = 0, visible = false, playing = !reduce;
 
-  function player(scr, y, dir, kind) {
+  function player(scr, y, dir, kind, yMin, yMax) {
     return {
       x: W / 2 + (Math.random() * 160 - 80), y: y, dir: dir, kind: kind, scr: scr,
-      tilt: 0, want: 0, goal: W / 2, think: 0, hp: 2, ammo: 3, refill: 0,
+      tilt: 0, pitch: 0, goal: W / 2, goalY: y, home: y, yMin: yMin, yMax: yMax,
+      think: 0, thinkY: 1 + Math.random(), hp: 2, ammo: 3, refill: 0,
       cool: 0.8 + Math.random(), flash: 0, hidden: false, react: 0
     };
   }
@@ -56,8 +59,8 @@
   function reset(keepScore) {
     var score = keepScore && state ? state.score : { p1: 0, p2: 0 };
     state = {
-      p1: player(A, A.scr.y + A.scr.h - 52, -1, "shooter"),
-      p2: player(B, B.scr.y + 52, 1, "shooter"),
+      p1: player(A, A.scr.y + A.scr.h - 52, -1, "shooter", A.scr.y + 90, A.scr.y + A.scr.h - 44),
+      p2: player(B, B.scr.y + 52, 1, "shooter", B.scr.y + 44, B.scr.y + B.scr.h - 90),
       shots: [], bits: [], edgeFlash: [], ko: 0, shake: 0, score: score
     };
   }
@@ -129,6 +132,22 @@
     var v = speedFrom(me.tilt) * SHIP_SPEED * (me.dir < 0 ? 1 : -1);
     me.x = clampX(me.x + v * dt);
 
+    // forward/back: now and then push up toward the edge for a closer shot, then drop back
+    me.thinkY -= dt;
+    if (me.thinkY <= 0) {
+      var push = Math.random() < 0.45;
+      if (!push) me.goalY = me.home + (Math.random() * 40 - 20);
+      else me.goalY = me.dir < 0 ? me.yMin + Math.random() * 60 : me.yMax - Math.random() * 60;
+      me.thinkY = 1.2 + Math.random() * 1.6;
+    }
+    // forward = toward the edge that faces the other phone
+    var gapY = (me.goalY - me.y) * me.dir;
+    var wantP = Math.max(-MAX_TILT, Math.min(MAX_TILT, gapY * 0.3));
+    if (Math.abs(gapY) < 10) wantP = 0;
+    me.pitch += (wantP - me.pitch) * (1 - Math.exp(-dt * 5));
+    var vy = speedFrom(me.pitch) * SHIP_SPEED * 0.5 * me.dir;
+    me.y = Math.max(me.yMin, Math.min(me.yMax, me.y + vy * dt));
+
     // shoot when roughly lined up
     me.cool -= dt;
     if (me.cool <= 0 && Math.abs(me.x - foe.x) < 90 && !foe.hidden) {
@@ -140,7 +159,7 @@
   function step(dt) {
     var p1 = state.p1, p2 = state.p2;
     if (state.ko <= 0) { brain(p1, p2, dt); brain(p2, p1, dt); }
-    else { p1.tilt *= 1 - Math.min(1, dt * 4); p2.tilt *= 1 - Math.min(1, dt * 4); }
+    else { [p1, p2].forEach(function (p) { var k = 1 - Math.min(1, dt * 4); p.tilt *= k; p.pitch *= k; }); }
 
     [p1, p2].forEach(function (p) {
       if (p.ammo < 3) { p.refill -= dt; if (p.refill <= 0) { p.ammo++; p.refill = 0.6; } }
@@ -226,13 +245,30 @@
     }
   }
 
-  // Draws one phone tilted by `deg`, with everything that's on its screen.
-  function phone(P, pivot, deg, bg, contents) {
+  // Draws one phone with everything on its screen. `roll` is the steering-wheel turn (degrees);
+  // `pitch` is the forward/back tip, shown as the phone foreshortening and the dipping side darkening.
+  // `facingY` is the edge that faces the other phone.
+  function phone(P, pivot, roll, pitch, facingY, bg, contents) {
+    var tip = Math.min(1, Math.abs(pitch) / MAX_TILT);
     ctx.save();
-    ctx.translate(pivot.x, pivot.y); ctx.rotate(deg * Math.PI / 180); ctx.translate(-pivot.x, -pivot.y);
+    ctx.translate(pivot.x, pivot.y);
+    ctx.rotate(roll * Math.PI / 180);
+    ctx.scale(1, 1 - 0.16 * tip);
+    ctx.translate(-pivot.x, -pivot.y);
     ctx.fillStyle = COL.ink; rr(P.body.x, P.body.y, P.body.w, P.body.h, 34); ctx.fill();
     ctx.fillStyle = dots(bg); rr(P.scr.x, P.scr.y, P.scr.w, P.scr.h, 16); ctx.fill();
-    ctx.save(); rr(P.scr.x, P.scr.y, P.scr.w, P.scr.h, 16); ctx.clip(); contents(); ctx.restore();
+    ctx.save(); rr(P.scr.x, P.scr.y, P.scr.w, P.scr.h, 16); ctx.clip(); contents();
+    if (tip > 0.05) {
+      // the side tipping away from the player goes darker, the side coming up catches light
+      var farY = facingY === P.scr.y ? P.scr.y + P.scr.h : P.scr.y;
+      var awayY = pitch > 0 ? facingY : farY, nearY = pitch > 0 ? farY : facingY;
+      var g = ctx.createLinearGradient(0, awayY, 0, nearY);
+      g.addColorStop(0, "rgba(0,0,0," + (0.45 * tip).toFixed(3) + ")");
+      g.addColorStop(0.6, "rgba(0,0,0,0)");
+      g.addColorStop(1, "rgba(255,255,255," + (0.06 * tip).toFixed(3) + ")");
+      ctx.fillStyle = g; ctx.fillRect(P.scr.x, P.scr.y, P.scr.w, P.scr.h);
+    }
+    ctx.restore();
     ctx.restore();
   }
 
@@ -272,18 +308,18 @@
     if (state.shake > 0 && !reduce) ctx.translate((Math.random() - 0.5) * 5, (Math.random() - 0.5) * 5);
 
     // A clockwise turn looks clockwise from either side, so both phones use the same sign.
-    phone(B, PIVOT_B, p2.tilt * SHOW_TILT, COL.p2Bg, function () {
+    phone(B, PIVOT_B, p2.tilt * SHOW_TILT, p2.pitch, EDGE_B, COL.p2Bg, function () {
       label("PLAYER 2", B.scr.x + B.scr.w - 22, B.scr.y + B.scr.h - 22, "rgba(244,239,230,0.5)", true, 13);
       health(p2, B.scr.x + 20, B.scr.y + B.scr.h - 28, 1);
-      pips(p2.ammo, p2.x, p2.y - 40, COL.p2);
+      if (!p2.hidden) pips(p2.ammo, p2.x, p2.y - 40, COL.p2);
       drawShip(p2, COL.p2, COL.p2Wing, COL.p2Bg);
       shotsOn("B");
       if (state.ko > 0) label(p2.hidden ? "KNOCKED OUT" : "WIN", W / 2, B.scr.y + B.scr.h / 2, COL.paper, true, 30, "center");
     });
-    phone(A, PIVOT_A, p1.tilt * SHOW_TILT, COL.p1Bg, function () {
+    phone(A, PIVOT_A, p1.tilt * SHOW_TILT, p1.pitch, EDGE_A, COL.p1Bg, function () {
       label("PLAYER 1", A.scr.x + 22, A.scr.y + 22, "rgba(244,239,230,0.5)", false, 13);
       health(p1, A.scr.x + A.scr.w - 30, A.scr.y + 18, -1);
-      pips(p1.ammo, p1.x, p1.y + 34, COL.p1);
+      if (!p1.hidden) pips(p1.ammo, p1.x, p1.y + 34, COL.p1);
       drawShip(p1, COL.p1, COL.p1Wing, COL.p1Bg);
       shotsOn("A");
       if (state.ko > 0) label(p1.hidden ? "KNOCKED OUT" : "WIN", W / 2, A.scr.y + A.scr.h / 2, COL.paper, false, 30, "center");
