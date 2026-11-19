@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Become a tester — SPILLOVER</title>
+<meta name="description" content="Sign up to test SPILLOVER on Google Play, or send feedback on the beta.">
+<meta name="theme-color" content="#B84A34">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar" style="color: var(--paper)">
+  <a class="topbar__brand" href="index.html" aria-label="SPILLOVER home">
+    <svg viewBox="0 0 108 108" aria-hidden="true"><rect width="54" height="108" fill="#D9A441"/><rect x="54" width="54" height="108" fill="#6E4A72"/><rect x="51.5" width="5" height="108" fill="#1F1D1A"/><path d="M42 50h9v9h-9z" fill="#1F1D1A" opacity=".65"/><path d="M60 50h12v12H60z" fill="#F4EFE6"/></svg>
+    <span>SPILLOVER</span>
+  </a>
+  <nav aria-label="Main">
+    <a href="#signup">Test on Google Play</a>
+    <a href="#feedback">Send feedback</a>
+    <a class="hide-sm" href="index.html#download">Download</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="screen screen--brick page-head" id="signup" aria-labelledby="signup-title">
+  <div class="inner form-grid">
+    <div>
+      <h1 class="screen-title" id="signup-title">Test it on<br><span class="outline">Google Play</span></h1>
+      <p class="lede">Before a new game can go public on Google Play, at least 12 people have to test it for 14 days in a row.</p>
+      <p>Sign up with the Google account on your Android phone. You'll get an email with a link to install SPILLOVER from the Play Store. Keep it installed and open it now and then for two weeks. That's it.</p>
+      <p>Already have the beta from the website? That's fine. The Play Store version replaces it and keeps your progress.</p>
+    </div>
+
+    <form class="form" data-form="tester" novalidate>
+      <div class="field">
+        <label for="t-name">Your name</label>
+        <input class="input" id="t-name" name="name" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="t-email">Google account email</label>
+        <p class="hint" id="t-email-hint">The one signed in on your Android phone's Play Store. Usually your Gmail.</p>
+        <input class="input" id="t-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="t-email-hint">
+      </div>
+      <div class="field">
+        <label for="t-phone">Phone model <span style="font-weight:500">(optional)</span></label>
+        <input class="input" id="t-phone" name="phone" placeholder="e.g. Redmi Note 12, Galaxy A34">
+      </div>
+      <label class="check"><input type="checkbox" name="consent" value="yes" required> <span>Email me the test invite and updates about the test. Nothing else.</span></label>
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div><button class="btn btn--ink btn--big" type="submit">Sign up to test</button></div>
+      <p class="status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<div class="seam" aria-hidden="true"></div>
+
+<section class="screen screen--clay" id="feedback" aria-labelledby="fb-title">
+  <div class="inner form-grid">
+    <div>
+      <h2 class="screen-title" id="fb-title">Tell us what<br><span class="outline">to fix</span></h2>
+      <p class="lede">Played a round? Every bit of feedback goes straight into the next build.</p>
+      <p>The most useful things to tell us: anything that felt unfair, controls that didn't respond the way you expected, and anything that crashed or froze. Say what you were doing when it happened.</p>
+    </div>
+
+    <form class="form" data-form="feedback" novalidate>
+      <fieldset class="field">
+        <legend>What did you play?</legend>
+        <div class="choices">
+          <label class="choice"><input type="checkbox" name="modes" value="Duel"><span>Duel</span></label>
+          <label class="choice"><input type="checkbox" name="modes" value="Bomb"><span>Bomb</span></label>
+          <label class="choice"><input type="checkbox" name="modes" value="Team"><span>Team</span></label>
+          <label class="choice"><input type="checkbox" name="modes" value="Tournament"><span>Tournament</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="field">
+        <legend>How much fun was it?</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="rating" value="1"><span>1</span></label>
+          <label class="choice"><input type="radio" name="rating" value="2"><span>2</span></label>
+          <label class="choice"><input type="radio" name="rating" value="3"><span>3</span></label>
+          <label class="choice"><input type="radio" name="rating" value="4"><span>4</span></label>
+          <label class="choice"><input type="radio" name="rating" value="5"><span>5</span></label>
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="f-good">What was fun?</label>
+        <textarea class="textarea" id="f-good" name="good"></textarea>
+      </div>
+      <div class="field">
+        <label for="f-bad">What broke, felt off, or annoyed you?</label>
+        <textarea class="textarea" id="f-bad" name="bad" required></textarea>
+      </div>
+      <div class="field">
+        <label for="f-phone">Phone model and number of players <span style="font-weight:500">(optional)</span></label>
+        <input class="input" id="f-phone" name="phone" placeholder="e.g. Pixel 7, 4 players">
+      </div>
+      <div class="field">
+        <label for="f-email">Email <span style="font-weight:500">(optional, only if you want a reply)</span></label>
+        <input class="input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email">
+      </div>
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div><button class="btn btn--ink btn--big" type="submit">Send feedback</button></div>
+      <p class="status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="inner">
+    <div class="foot__brand">SPILL<span>OVER</span></div>
+    <nav aria-label="Footer">
+      <a href="index.html">Home</a>
+      <a href="index.html#download">Download</a>
+      <a href="#signup">Become a tester</a>
+      <a href="#feedback">Send feedback</a>
+    </nav>
+    <div class="foot__small">
+      <p>© 2026 SPILLOVER. Your email is only used for the test invite.</p>
+      <p>thanks to middle east.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="assets/js/forms.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

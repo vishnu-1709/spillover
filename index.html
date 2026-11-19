@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPILLOVER — a party shooter for phones placed top to top</title>
+<meta name="description" content="SPILLOVER is a local multiplayer shooter for 2 to 6 Android phones. Put the phones top to top, tilt to move, tap to shoot. Your shots leave your screen and land on your friend's. Free beta download.">
+<meta name="theme-color" content="#6E4A72">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<meta property="og:title" content="SPILLOVER">
+<meta property="og:description" content="Put two phones top to top. Shoot off your screen, hit your friend on theirs. Free Android beta.">
+<meta property="og:image" content="assets/img/og.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="topbar__brand" href="#top" aria-label="SPILLOVER home">
+    <svg viewBox="0 0 108 108" aria-hidden="true"><rect width="54" height="108" fill="#D9A441"/><rect x="54" width="54" height="108" fill="#6E4A72"/><rect x="51.5" width="5" height="108" fill="#1F1D1A"/><path d="M42 50h9v9h-9z" fill="#1F1D1A" opacity=".65"/><path d="M60 50h12v12H60z" fill="#F4EFE6"/></svg>
+  </a>
+  <nav aria-label="Main">
+    <a class="hide-sm" href="#how">How it plays</a>
+    <a class="hide-sm" href="#modes">Modes</a>
+    <a class="on-plum" href="#download">Download</a>
+    <a class="on-plum" href="tester.html">Become a tester</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- HERO: the game's splash screen -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <h1 id="hero-title" class="visually-hidden">SPILLOVER</h1>
+  <div class="hero__half hero__half--ochre"><span class="hero__word hero__word--spill" aria-hidden="true">SPILL</span></div>
+  <div class="hero__seam" aria-hidden="true"></div>
+  <div class="hero__half hero__half--plum"><span class="hero__word hero__word--over" aria-hidden="true">OVER</span></div>
+  <div class="hero__shot" aria-hidden="true"></div>
+
+  <div class="hero__panel">
+    <p>A party shooter for phones placed top to top. Shoot off the edge of your screen and hit your friend on theirs.</p>
+    <div class="hero__actions">
+      <a class="btn btn--paper" href="#download" data-dl-label>Download the beta</a>
+      <a class="btn btn--line" href="#how">Try it here first</a>
+    </div>
+    <p class="hero__fine" data-hero-fine>Free on Android. 2 to 6 players on the same Wi-Fi. Coming to Google Play soon.</p>
+  </div>
+</section>
+
+<div class="seam" aria-hidden="true"></div>
+
+<!-- DEMO: two phones on a table -->
+<section class="screen screen--slate" id="how" aria-labelledby="how-title">
+  <div class="inner demo">
+    <div>
+      <h2 class="screen-title" id="how-title">Two phones.<br><span class="outline">One table.</span></h2>
+      <p class="lede">Each phone is its own screen, but the shots don't stop at the edge. Fire off the top of yours and the shot comes out on theirs.</p>
+      <p>This is the whole game, so try it right here. The phone at the bottom is yours.</p>
+      <ul class="demo__keys">
+        <li><b>Move</b><span>Move your mouse or drag your finger across your phone. In the real game, you tilt it.</span></li>
+        <li><b>Shoot</b><span>Click or tap. You have 3 shots and they refill.</span></li>
+        <li><b>Keyboard</b><span><span class="kbd">←</span> <span class="kbd">→</span> to move, <span class="kbd">Space</span> to shoot.</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="demo__table">
+        <canvas class="demo__canvas" id="demo" width="720" height="860" tabindex="0" aria-label="Playable demo: your ship on the bottom phone, a bot on the top phone. Move to steer and click or press space to shoot." role="application"></canvas>
+      </div>
+      <div class="demo__hud">
+        <span class="demo__score" id="demo-score" aria-live="polite">You 0 &nbsp; Bot 0</span>
+        <button class="btn btn--line" type="button" id="demo-tilt" hidden>Steer by tilting</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="seam" aria-hidden="true"></div>
+
+<!-- SETUP -->
+<section class="screen screen--paper" id="setup" aria-labelledby="setup-title">
+  <div class="inner">
+    <h2 class="screen-title" id="setup-title">Ready in a minute</h2>
+    <p class="lede">Everyone needs the game on their own phone. That's all the setup there is.</p>
+    <ol class="steps">
+      <li>
+        <span class="steps__n" aria-hidden="true">1</span>
+        <svg viewBox="0 0 200 120" aria-hidden="true" fill="none" stroke="#1F1D1A" stroke-width="3" stroke-linecap="square">
+          <path d="M70 46a42 42 0 0 1 60 0 M80 58a26 26 0 0 1 40 0 M90 70a11 11 0 0 1 20 0"/><path d="M97 78h6v6h-6z" fill="#1F1D1A"/>
+          <rect x="20" y="92" width="44" height="22"/><rect x="78" y="92" width="44" height="22"/><rect x="136" y="92" width="44" height="22"/>
+        </svg>
+        <h3>Join the same Wi-Fi</h3>
+        <p>All phones on one network. A phone's hotspot works too, so you can play anywhere.</p>
+      </li>
+      <li>
+        <span class="steps__n" aria-hidden="true">2</span>
+        <svg viewBox="0 0 200 120" aria-hidden="true" fill="none" stroke="#1F1D1A" stroke-width="3" stroke-linecap="square">
+          <rect x="70" y="14" width="60" height="32" fill="#1F1D1A"/><path d="M88 30h24" stroke="#F4EFE6"/>
+          <rect x="18" y="78" width="60" height="32"/><rect x="122" y="78" width="60" height="32"/>
+          <path d="M84 50L58 74 M116 50l26 24"/><path d="M52 70l6 4-1 -7 M148 70l-6 4 1-7"/>
+        </svg>
+        <h3>One hosts, the rest join</h3>
+        <p>Open the game and tap Play. One person makes a room and picks the mode. Everyone else taps it in the list.</p>
+      </li>
+      <li>
+        <span class="steps__n" aria-hidden="true">3</span>
+        <svg viewBox="0 0 200 120" aria-hidden="true" fill="none" stroke="#1F1D1A" stroke-width="3" stroke-linecap="square">
+          <rect x="44" y="8" width="112" height="44"/><rect x="44" y="68" width="112" height="44"/>
+          <path d="M44 60h112" stroke-dasharray="4 6" stroke-width="2"/>
+          <path d="M97 80h6v6h-6z M97 34h6v6h-6z" fill="#1F1D1A"/><path d="M100 76V44"/>
+        </svg>
+        <h3>Put the phones top to top</h3>
+        <p>Top edges touching, flat on a table, or hold them and sit facing each other. With more players, sit in a circle.</p>
+      </li>
+      <li>
+        <span class="steps__n" aria-hidden="true">4</span>
+        <svg viewBox="0 0 200 120" aria-hidden="true" fill="none" stroke="#1F1D1A" stroke-width="3" stroke-linecap="square">
+          <rect x="50" y="34" width="100" height="50" transform="rotate(-10 100 59)"/>
+          <path d="M30 98a76 76 0 0 1 0-74 M170 24a76 76 0 0 1 0 74"/><path d="M24 30l6-6 6 6 M164 92l6 6 6-6"/>
+          <path d="M120 70h10v10h-10z" fill="#1F1D1A"/>
+        </svg>
+        <h3>Tilt to move, tap to shoot</h3>
+        <p>Hold to charge a bigger shot. The round button in the corner fires your power.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<div class="seam" aria-hidden="true"></div>
+
+<!-- MODES -->
+<section class="screen screen--sage" id="modes" aria-labelledby="modes-title">
+  <div class="inner">
+    <h2 class="screen-title" id="modes-title">Three ways to play</h2>
+    <p class="lede">The host picks the mode, the number of rounds, and which surprise events can show up.</p>
+
+    <div class="modes">
+      <article class="mode">
+        <div class="mode__art anim" aria-hidden="true">
+          <svg viewBox="0 0 300 200" fill="none" stroke="#F4EFE6" stroke-width="2.5">
+            <rect x="70" y="18" width="160" height="72"/><rect x="70" y="110" width="160" height="72"/>
+            <circle cx="150" cy="40" r="10" fill="#F4EFE6"/><circle cx="150" cy="160" r="10" fill="#F4EFE6"/>
+            <g class="d-up"><rect x="146" y="140" width="8" height="8" fill="#F4EFE6" stroke="none"/></g>
+            <g class="d-down"><rect x="118" y="52" width="8" height="8" fill="#D9A441" stroke="none"/></g>
+          </svg>
+        </div>
+        <div>
+          <h3>Duel <small>2 players</small></h3>
+          <p>One on one. Dodge their shots, land yours, and knock out their ship first. Best of 3, 5 or 7 rounds.</p>
+        </div>
+      </article>
+
+      <article class="mode">
+        <div class="mode__art anim" aria-hidden="true">
+          <svg viewBox="0 0 300 200" fill="none" stroke="#F4EFE6" stroke-width="2.5">
+            <circle cx="150" cy="116" r="54" stroke-dasharray="3 7" stroke-width="2"/>
+            <rect x="118" y="150" width="64" height="34"/><rect x="226" y="98" width="34" height="64" transform="rotate(0)"/><rect x="118" y="38" width="64" height="34"/><rect x="40" y="98" width="34" height="64"/>
+            <g class="d-bomb-move">
+              <circle cx="150" cy="160" r="9" fill="#F4EFE6" stroke="none"/>
+              <path d="M156 152l5-6" stroke-linecap="square"/>
+              <rect class="d-fuse" x="160" y="141" width="5" height="5" fill="#D9A441" stroke="none"/>
+            </g>
+          </svg>
+        </div>
+        <div>
+          <h3>Bomb <small>3 to 6 players</small></h3>
+          <p>One bomb, one burning fuse. Catch it, throw it to the next phone, and don't be holding it when it goes off. Grenades and mines keep everyone moving.</p>
+        </div>
+      </article>
+
+      <article class="mode">
+        <div class="mode__art anim" aria-hidden="true">
+          <svg viewBox="0 0 300 200" fill="none" stroke="#F4EFE6" stroke-width="2.5">
+            <rect x="38" y="18" width="104" height="60"/><rect x="158" y="18" width="104" height="60"/>
+            <rect x="38" y="122" width="104" height="60"/><rect x="158" y="122" width="104" height="60"/>
+            <path d="M150 122v60" stroke-dasharray="3 5" stroke-width="2"/>
+            <circle cx="90" cy="38" r="8" fill="#D9A441" stroke="none"/><circle cx="210" cy="38" r="8" fill="#D9A441" stroke="none"/>
+            <g class="d-cross"><circle cx="90" cy="162" r="9" fill="#F4EFE6" stroke="none"/></g>
+            <circle cx="210" cy="162" r="9" fill="#F4EFE6" stroke="none"/>
+            <g class="d-up"><rect x="206" y="142" width="7" height="7" fill="#F4EFE6" stroke="none"/></g>
+          </svg>
+        </div>
+        <div>
+          <h3>Team <small>4 or 6 players</small></h3>
+          <p>Two sides, facing each other. Shots fly across to the other team, and your ship can slide onto a teammate's screen to help them out.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="extras">
+      <div>
+        <h3>Events</h3>
+        <p>The host can switch on events that hit mid-round: Lights out, Flip, Shrink and Hot hands. Only the ones they pick will show up.</p>
+      </div>
+      <div>
+        <h3>Tournaments</h3>
+        <p>Got 3 to 8 people? Run a 1v1 knockout bracket. Everyone not playing watches the match live on their own phone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="seam" aria-hidden="true"></div>
+
+<!-- SHIPS -->
+<section class="screen screen--plum" id="ships" aria-labelledby="ships-title">
+  <div class="inner">
+    <h2 class="screen-title" id="ships-title">Pick your ship</h2>
+    <p class="lede">Three ships that play very differently. Each one comes in two looks, so pick the one that feels like yours.</p>
+    <div class="ships">
+      <div class="ship"><span data-ship="shooter"></span><div><h3>Shooter</h3><p>Fast, straight shots. The easiest to pick up and the hardest to master.</p></div></div>
+      <div class="ship"><span data-ship="scatter"></span><div><h3>Scatter</h3><p>Fires a spread of shots. Slower, short range, and brutal up close.</p></div></div>
+      <div class="ship"><span data-ship="venom"></span><div><h3>Venom</h3><p>Lobs poison. A miss isn't wasted: it leaves a puddle that hurts anyone who moves through it.</p></div></div>
+    </div>
+    <div class="powers">
+      <b>Plus one power each round:</b>
+      <span class="power"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9c-4-1.5-7-4.5-7-9V6z"/></svg></i>Shield</span>
+      <span class="power"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 12h11 M11 7l5 5-5 5 M3 7h4 M3 17h4"/></svg></i>Dash</span>
+      <span class="power"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 8h14 M15 5l3 3-3 3 M20 16H6 M9 13l-3 3 3 3"/></svg></i>Jam</span>
+      <span class="power"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M6.5 6v6.5a5.5 5.5 0 0 0 11 0V6 M5 4h3v3H5z M16 4h3v3h-3z"/></svg></i>Magnet</span>
+    </div>
+  </div>
+</section>
+
+<div class="seam" aria-hidden="true" data-clips-seam hidden></div>
+
+<!-- CLIPS (hidden until clips are added in config.js) -->
+<section class="screen screen--ink" id="clips" aria-labelledby="clips-title" hidden>
+  <div class="inner">
+    <h2 class="screen-title" id="clips-title">Watch it played</h2>
+    <p class="lede">Real phones, real tables, real shouting.</p>
+    <div class="clips" id="clips-list"></div>
+  </div>
+</section>
+
+<div class="seam" aria-hidden="true"></div>
+
+<!-- DOWNLOAD -->
+<section class="screen screen--ochre" id="download" aria-labelledby="dl-title">
+  <div class="inner">
+    <div class="dl">
+      <div>
+        <h2 class="screen-title" id="dl-title">Get the beta</h2>
+        <p class="lede">Free for Android. Install it on every phone that's going to play.</p>
+        <a class="btn btn--ink btn--big" id="dl-btn" href="#" download><span class="sq" aria-hidden="true"></span>Download for Android</a>
+        <p class="dl__meta" id="dl-meta"></p>
+
+        <div class="dl__qr" id="dl-qr" hidden>
+          <div id="qr-box" role="img" aria-label="QR code that opens this download page on your phone"></div>
+          <p>On a computer? Point your phone's camera at this code to open the download on your phone.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="install-title" id="install-title">Installing it</h3>
+        <ol class="install" aria-labelledby="install-title">
+          <li>Tap <b>Download for Android</b>. If Chrome warns that the file might be harmful, tap <b>Download anyway</b>.</li>
+          <li>Open the file from your notifications or the Downloads folder.</li>
+          <li>If Android asks, allow your browser to <b>install unknown apps</b>, then go back.</li>
+          <li>Tap <b>Install</b>. If Play Protect shows a warning, tap <b>More details</b>, then <b>Install anyway</b>.</li>
+        </ol>
+        <div class="note">
+          <p>The warnings appear because the beta isn't from the Play Store yet, not because anything is wrong with the file.</p>
+          <p>Getting an update later? Download the new version and install it over the old one. Your coins and unlocks stay.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="soon" id="soon">
+      <div>
+        <h3 data-soon-title>Google Play is next</h3>
+        <p data-soon-text>Help get it there: sign up to test the Play Store version, or tell us what to fix.</p>
+      </div>
+      <div class="hero__actions">
+        <a class="btn btn--ink" href="tester.html">Become a tester</a>
+        <a class="btn btn--line" href="tester.html#feedback">Send feedback</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="inner">
+    <div class="foot__brand">SPILL<span>OVER</span></div>
+    <nav aria-label="Footer">
+      <a href="#how">How it plays</a>
+      <a href="#download">Download</a>
+      <a href="tester.html">Become a tester</a>
+      <a href="tester.html#feedback">Send feedback</a>
+    </nav>
+    <div class="foot__small">
+      <p>© 2026 SPILLOVER. Made for playing in the same room.</p>
+      <p>thanks to middle east.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="assets/js/ships.js"></script>
+<script src="assets/js/qrcode.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/demo.js"></script>
+</body>
+</html>
